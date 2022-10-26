@@ -25,6 +25,8 @@ const Header = () => {
                             <Nav.Link href="#features" className='me-4'><Link to='/courses'>Courses</Link></Nav.Link>
                             <Nav.Link href="#pricing" className='me-4'><Link to='/faq'>FAQ</Link></Nav.Link>
                             <Nav.Link href="#pricing" className='me-4'><Link to='/blog'>Blog</Link></Nav.Link>
+                            <Nav.Link href="#pricing" className='me-4'><Link to='/login'>Log In</Link></Nav.Link>
+                            <Nav.Link href="#pricing" className='me-4'><Link to='/register'>Register</Link></Nav.Link>
                             <div className='d-flex justify-content-center align-items-center'>
                                 {
                                     theme ? <FaRegMoon onClick={() => setTheme(!theme)}></FaRegMoon>

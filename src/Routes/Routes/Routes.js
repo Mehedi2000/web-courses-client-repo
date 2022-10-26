@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../../component/Checkout/Checkout";
 import CourseDetails from "../../component/CourseDetails/CourseDetails";
+import Login from "../../component/Login/Login";
+import Register from "../../component/Register/Register";
 import Main from "../../layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import Courses from "../../Pages/Courses/Courses";
@@ -37,6 +39,14 @@ export const router = createBrowserRouter([
                 path: '/category/:id',
                 element: <Checkout></Checkout>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+            },
+            {
+                path: '/login',
+                element: <Login></Login>,
+            },
+            {
+                path: '/register',
+                element: <Register></Register>,
             }
         ]
     }
