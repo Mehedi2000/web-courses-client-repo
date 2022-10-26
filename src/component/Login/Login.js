@@ -1,18 +1,23 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn, setLoading } = useContext(AuthContext);
+    const { signIn, setLoading, providerLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
+
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -41,6 +46,16 @@ const Login = () => {
         //     setLoading(false);
         // })
     }
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                // form.reset();
+            })
+            .catch(error => console.log(error))
+    }
     return (
         <Container className='mt-5'>
             <Form onSubmit={handleSubmit}>
@@ -55,8 +70,11 @@ const Login = () => {
                     <Form.Control name="password" type="password" placeholder="Password" required />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button className='me-3' variant="primary" type="submit">
                     Login
+                </Button>
+                <Button onClick={handleGoogleSignIn} variant="primary" type="submit">
+                    <FaGoogle></FaGoogle> Login With Google
                 </Button>
                 <p className='mt-3 fs-5 fw-semibold'>New User? <Link to='/register'>Register</Link></p>
                 <Form.Text className="text-danger">
