@@ -1,25 +1,31 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container } from 'react-bootstrap';
+import { FaArrowAltCircleDown } from 'react-icons/fa';
 
 const CourseDetails = () => {
     const category = useLoaderData()
     console.log(category)
-    const { title, description, image, price, rating } = category;
+    const { title, description, image, price, rating, id } = category;
     return (
         <div>
             <Container>
                 <Card className="text-center mt-5">
-                    <Card.Header>{title}</Card.Header>
+                    <Card.Header className='fs-3 fw-bold d-flex justify-content-between align-items-center'>
+                        <p> {title}</p>
+                        <FaArrowAltCircleDown></FaArrowAltCircleDown>
+                    </Card.Header>
+
                     <Card.Body>
-                        <Card.Title>Special title treatment</Card.Title>
-                        <Card.Text>
-                            With supporting text below as a natural lead-in to additional content.
+                        <Card.Img style={{ height: '25rem' }} variant="top" src={image} />
+                        <Card.Text className='mt-3 fw-semibold'>
+                            {description}
                         </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Link to={`/category/${id}`}><Button variant="primary">Get Premium Access</Button></Link>
                     </Card.Body>
+                    <Card.Footer className="text-primary fw-semibold fs-5">Price : {price} $</Card.Footer>
                 </Card>
             </Container>
         </div>
