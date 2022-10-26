@@ -10,9 +10,9 @@ const Login = () => {
     const [error, setError] = useState('');
     const { signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
-    // const location = useLocation();
+    const location = useLocation();
 
-    // const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -26,9 +26,9 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                // if (user.emailVerified) {
-                //     navigate(from, { replace: true });
-                // }
+                if (user.emailVerified) {
+                    navigate(from, { replace: true });
+                }
                 // else {
                 //     toast.error('Your email is not verified. Please verify your email address.')
                 // }
