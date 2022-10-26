@@ -38,7 +38,7 @@ const Header = () => {
                             <Nav.Link href="#pricing" className='me-4'><Link to='/register'>Register</Link></Nav.Link> */}
                             <Nav.Link href="#pricing" className='me-4'>
                                 {
-                                    user?.photoURL ?
+                                    user?.uid ?
                                         <>
                                             <Link onClick={handleLogOut} className='me-4'>Log Out</Link>
                                             <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL}>
