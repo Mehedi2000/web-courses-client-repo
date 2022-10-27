@@ -8,6 +8,7 @@ import Blog from "../../Pages/Blog/Blog";
 import Courses from "../../Pages/Courses/Courses";
 import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -36,9 +37,9 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             },
             {
-                path: '/category/:id',
-                element: <Checkout></Checkout>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                path: '/checkout/:id',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`)
             },
             {
                 path: '/login',

@@ -10,21 +10,22 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const providerLogin = (provider) => {
-        // setLoading(true);
+        setLoading(true);
         return signInWithPopup(auth, provider);
     }
 
     const createUser = (email, password) => {
-        // setLoading(true);
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const signIn = (email, password) => {
-        // setLoading(true);
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const updateUserProfile = (profile) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, profile);
     }
 
@@ -33,17 +34,14 @@ const AuthProvider = ({ children }) => {
     // }
 
     const logOut = () => {
-
+        setLoading(true);
         return signOut(auth);
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('inside auth state change', currentUser);
-
-            if (currentUser === null || currentUser.emailVerified) {
-                setUser(currentUser);
-            }
+            setUser(currentUser)
             setLoading(false);
         });
 

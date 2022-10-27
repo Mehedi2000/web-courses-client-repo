@@ -23,7 +23,7 @@ const CourseDetails = () => {
                         <Card.Text className='mt-3 fw-semibold'>
                             {description}
                         </Card.Text>
-                        <Link to={`/category/${id}`}><Button variant="primary">Get Premium Access</Button></Link>
+                        <Link to={`/checkout/${id}`}><Button variant="primary">Get Premium Access</Button></Link>
                     </Card.Body>
                     <Card.Footer className="text-primary fw-semibold fs-5">Price : {price} $</Card.Footer>
                 </Card>
