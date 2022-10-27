@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container } from 'react-bootstrap';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const CourseDetails = () => {
     const category = useLoaderData()
@@ -11,11 +14,13 @@ const CourseDetails = () => {
     const { title, description, image, price, rating, id } = category;
     return (
         <div>
-            <Container>
+            <Container className='post' ref={ref}>
                 <Card className="text-center mt-5">
                     <Card.Header className='fs-3 fw-bold d-flex justify-content-between align-items-center'>
                         <p> {title}</p>
-                        <FaArrowAltCircleDown></FaArrowAltCircleDown>
+                        <Pdf targetRef={ref} filename="post.pdf">
+                            {({ toPdf }) => <FaArrowAltCircleDown onClick={toPdf}></FaArrowAltCircleDown>}
+                        </Pdf>
                     </Card.Header>
 
                     <Card.Body>
