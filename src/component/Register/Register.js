@@ -25,7 +25,7 @@ const Register = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                // handleUpdateUserProfile(name, photoURL);
+                handleUpdateUserProfile(name, photoURL);
             })
             .catch(e => {
                 console.error(e);
@@ -33,16 +33,16 @@ const Register = () => {
             });
     }
 
-    // const handleUpdateUserProfile = (name, photoURL) => {
-    //     const profile = {
-    //         displayName: name,
-    //         photoURL: photoURL
-    //     }
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
 
-    //     updateUserProfile(profile)
-    //         .then(() => { })
-    //         .catch(error => console.error(error));
-    // }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
     return (
         <Container className='mt-5'>
             <Form onSubmit={handleSubmit}>

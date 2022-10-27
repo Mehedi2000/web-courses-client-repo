@@ -41,7 +41,7 @@ const Header = () => {
                                     user?.uid ?
                                         <>
                                             <Link onClick={handleLogOut} className='me-4'>Log Out</Link>
-                                            <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL}>
+                                            <Image title={user.displayName} style={{ height: '30px' }} roundedCircle src={user?.photoURL}>
                                             </Image>
                                         </>
                                         : <>
